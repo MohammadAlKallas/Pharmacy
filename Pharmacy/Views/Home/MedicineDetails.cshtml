@@ -1,0 +1,41 @@
+﻿@model Medicine
+@{
+    ViewData["Title"] = "Medicine Details";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- links -->
+    <link rel="stylesheet" href="/Bootstrap 5/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Home/style.css" />
+</head>
+<body>
+    <!-- Start ProductDetails-->
+    <div class="container">
+        <div class="ProductDetails mt-5">
+            <div class="row row-cols-lg-2 row-cols-1 g-5">
+                <div class="col ItemDetails">
+                    <h2>@Model.Title</h2>
+                    <p>@Model.Description</p>
+                    <div>
+                        <h5>Price:</h5><b>@Model.Price $</b>
+                    </div>
+                    <div>
+                        <h5>Category:</h5><b>@Model.ManufactureCompany.Value</b>
+                    </div>
+                </div>
+                <div class="col ItemImg">
+                    <img src=@Model.Image width="700" height="700"
+                         alt="Card image"
+                         class="img-thumbnail" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

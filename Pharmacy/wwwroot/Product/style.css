@@ -1,0 +1,40 @@
+
+/*----------Start Products -------*/
+.Products {
+  /*---------- HeaderProduct -------*/
+  /*---------- Products Cards  -------*/
+}
+.Products .HeaderProduct {
+  margin: 50px 30px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.Products .card {
+  border-radius: 20px;
+}
+
+.Products .card img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+/*----------Start formPage -------*/
+.formPage {
+    margin:50px 150px;
+    border:1px solid gray;
+    border-radius:5%;
+    padding:50px;
+}
+
+.formPage h1{
+    margin: 10px 0 40px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+        .formPage .form-group .control-label {
+            margin:10px 7px ;
+            font-weight:500;
+        }
+
+
+/*# sourceMappingURL=style.css.map */

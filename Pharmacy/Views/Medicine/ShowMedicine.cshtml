@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Medicine>
+
+@{
+    ViewData["Title"] = "Medicine";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- links -->
+    <link rel="stylesheet" href="~/Product/style.css" />
+</head>
+<body>
+    <!-- Start Medicine-->
+    <div class="Products mt-5 container-fluid">
+        @if (Model != null)
+        {
+            <!-- Start HeaderMedicine-->
+        <div class="HeaderProduct">
+            All Medicine
+            <a class="btn btn-success fw-bold float-end"
+               asp-action="CreateMedicine"
+               asp-controller="Medicine"> + New Medicine </a>
+        </div>
+
+            <!-- Start Medicine Cards -->
+            <div class="container">
+                <div class="row row-cols-2 row-cols-lg-5 row-cols-md-3 g-2">
+
+                    @foreach (Medicine item in Model)
+                    {
+                        <div class="col">
+                            <div class="card h-100">
+                                <img class="card-img-top"
+                                     src="@item.Image"
+                                     alt="Card image" />
+                                <div class="card-body">
+                                    <h4 class="card-title">@item.Title</h4>
+                                    <p class="card-text">
+                                        @item.Description
+                                    </p>
+
+                                </div>
+                                <a class="btn btn-secondary ms-3 me-3 "
+                                   asp-action="UpdateMedicine"
+                                   asp-controller="Medicine"
+                                   asp-route-ID="@item.Id">Edit Medicine</a>
+                                <a class="btn btn-danger ms-2 me-2 "
+                                   asp-action="DeleteMedicine"
+                                   asp-controller="Medicine"
+                                   asp-route-ID="@item.Id">Delete</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="ErrorSearch">
+                <h1>500</h1>
+                <h3>Internal Server Error</h3>
+                <h6>The Product is not available, Please try again later</h6>
+            </div>
+        }
+    </div>
+</body>
+</html>
+

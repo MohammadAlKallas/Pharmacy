@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Medicine>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- links -->
+    <link rel="stylesheet" href="../Home/style.css" />
+</head>
+<body>
+
+    <!-- Start Products-->
+    <div class="Products mt-5">
+        <!-- Start Products Cards -->
+        <div class="container">
+            <div class="row row-cols-2 row-cols-lg-5 row-cols-md-3 g-2">
+                @if (Model.ToList().Count != 0)
+                {
+                    @foreach (Medicine item in Model)
+                    {
+                        <div class="col">
+                            <div class="card">
+                                <img class="card-img-top"
+                                     src="@item.Image"
+                                     alt="Card image" />
+                                <div class="card-body">
+                                    <h4 class="card-title">@item.Title</h4>
+                                    <p class="card-text">
+                                        @item.Description
+                                    </p>
+                                    <a class="btn btn-primary"
+                                       asp-action="MedicineDetails"
+                                       asp-controller="Home"
+                                       asp-route-ID=@item.Id>More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="ErrorSearch">
+                        <h3>Result Not Found</h3>
+                        <h6>The Product is not available, Please try again later</h6>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

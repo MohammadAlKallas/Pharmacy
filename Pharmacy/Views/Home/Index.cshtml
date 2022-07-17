@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Medicine>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- links -->
+    <link rel="stylesheet" href="~/Home/style.css?v=1" />
+</head>
+<body>
+
+    <!--Start carousel-->
+    <div class="container-fluid mt-3" style="height:80vh">
+        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators">
+                <button type="button"
+                        data-bs-target="#demo"
+                        data-bs-slide-to="0"
+                        class="active"></button>
+                <button type="button"
+                        data-bs-target="#demo"
+                        data-bs-slide-to="1"></button>
+                <button type="button"
+                        data-bs-target="#demo"
+                        data-bs-slide-to="2"></button>
+            </div>
+
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/4021811/pexels-photo-4021811.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                         alt="New York"
+                         class="d-block"
+                         style="width: 100%;height:80vh;" />
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                         alt="Chicago"
+                         class="d-block"
+                         style="width: 100%;height:80vh;" />
+                </div>
+                <div class="carousel-item active">
+                    <img src="	https://images.pexels.com/photos/3652103/pexels-photo-3652103.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                         alt="Image 1"
+                         class="d-block "
+                         style="width: 100%;
+                           height:80vh" />
+                </div>
+            </div>
+
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#demo"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#demo"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Start Products-->
+    <div class="Products mt-5">
+        @if (Model != null)
+        {
+            <!-- Start HeaderProduct-->
+            <div class="HeaderProduct">
+                <h2>More Than 1,000 Medicine</h2>
+                <h6>The best Medicines you can find here at the right price</h6>
+            </div>
+
+            <!-- Start Products Cards -->
+            <div class="container">
+                <div class="row row-cols-2 row-cols-lg-5 row-cols-md-3 g-2">
+
+                    @foreach (Medicine item in Model)
+                    {
+                        <div class="col">
+                            <div class="card h-100">
+                                <img class="card-img-top  h-50"
+                                     src="@item.Image"
+                                     alt="Card image" />
+                                <div class="card-body">
+                                    <h4 class="card-title">@item.Title</h4>
+                                    <p class="card-text">
+                                        @item.Description
+                                    </p>
+
+                                </div>
+                                <a class="btn btn-primary w-50 mb-3 ms-3"
+                                   asp-action="MedicineDetails"
+                                   asp-controller="Home"
+                                   asp-route-ID=@item.Id>More Details</a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="ErrorSearch">
+                <h1>500</h1>
+                <h3>Internal Server Error</h3>
+                <h6>The Product is not available, Please try again later</h6>
+            </div>
+        }
+    </div>
+</body>
+</html>

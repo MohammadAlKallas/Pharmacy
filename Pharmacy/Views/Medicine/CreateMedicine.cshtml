@@ -1,0 +1,83 @@
+﻿@model Medicine
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Create New Medicine</title>
+    <!-- links -->
+    <link rel="stylesheet" href="../Product/style.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css" />
+
+</head>
+<body>
+    <div class="formPage">
+        <h1>Create New Medicine</h1>
+        <form asp-action="CreateMedicine">
+            <div class="row">
+                <div class="col-12 col-lg-6 d-none d-md-block">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label">Category</label>
+                        <select asp-for="ManufactureCompanyId" asp-items="ViewBag.CompanyList" name="ManufactureCompanyId" class="form-control"></select>
+                        <span asp-validation-for="ManufactureCompanyId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 d-none d-md-block">
+                    <div class="form-group">
+                        <label asp-for="Image" class="control-label"></label>
+                        <input asp-for="Image" class="form-control" />
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12 d-none d-md-block">
+                    <div class="form-group mt-5">
+                        <input type="submit" value="Create New" class="btn btn-primary fw-bold float-end" />
+                    </div>
+                    <a asp-action="ShowMedicine" asp-controller="Medicine">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.slim.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var multipleCancelButton = new Choices(
+                "#choices-multiple-remove-button",
+                {
+                    removeItemButton: true,
+                    searchResultLimit: 5,
+                }
+            );
+        });
+    </script>
+</body>
+</html>
+
+
+
